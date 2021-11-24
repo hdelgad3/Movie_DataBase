@@ -1,9 +1,7 @@
-import React, {useContext} from "react";
+import React from "react";
 
 //component
 import Thumb from "../Thumbnails";
-import Rate from "../Rate";
-import API from '../../API'
 
 //config
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
@@ -14,17 +12,13 @@ import NoImage from '../../images/no_image.jpg'
 //styles
 import { Wrapper, Content, Text } from "./MovieInfo.styles";
 
-import {Context} from '../../context'
+import {MovieState} from '../../hooks/useMovieFetch'
 
-const MovieInfo = ({movie}) => {
-    
-    const [user] = useContext(Context);
+type Props = {
+    movie: MovieState
+}
 
-    const handleRating = async value => {
-        const rate = await API.rateMovie(user.sessionId, movie.id, value);
-    }
-    
-    return (
+const MovieInfo: React.FC<Props> = ({movie}) => (
     <Wrapper backdrop={movie.backdrop_path}>
         <Content>
             <Thumb image={movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`: NoImage} clickable={false}/>
@@ -45,15 +39,8 @@ const MovieInfo = ({movie}) => {
                         ))}
                     </div>
                 </div>
-                {user && (
-                <div>
-                    <p>Rate Movie</p>
-                    <Rate callback={handleRating}/>
-                </div>
-                )}
             </Text>
         </Content>
     </Wrapper>
-);
-                        }
+)
 export default MovieInfo;
