@@ -13,6 +13,18 @@ In the project directory, you can run:
 
 # User View
 
+## Desktop View
+
+![Desktop View](./public/rmdb_desktop.PNG)
+
+## Mobile View
+
+![Mobile View](./public/rmdb_mobile_view.PNG)
+
+## Searching a movie
+
+![Search Ex](./public/rmdb_search_example.PNG)
+
 
 
 
